@@ -21,8 +21,6 @@ model User {
   comments Comment[]
   follower Follow[] @relation("FollowedBy")
 following Follow[] @relation("Following")
-
-
 }
 model Article {
   id        Int      @id @default(autoincrement())

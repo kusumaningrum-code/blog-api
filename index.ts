@@ -3,6 +3,8 @@ import express, { Application, Response, Request, NextFunction } from "express";
 import cors from "cors";
 dotenv.config();
 import userRouter from "./routers/userRouter";
+import followerRouter from "./routers/followerRouter";
+import articleRouter from "./routers/articleRouter";
 import { prisma } from "./config/prisma";
 import responseHandler from "./utils/responseHandler";
 
@@ -15,7 +17,7 @@ app.get("/", (req: Request, res: Response): any => {
   return res.status(200).send("<h1>ORM API<h1>");
 });
 
-app.use("/user", userRouter);
+app.use("/user", userRouter, followerRouter, articleRouter);
 
 //error handling
 app.use((error: any, req: Request, res: Response, next: NextFunction) => {
